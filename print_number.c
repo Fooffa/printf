@@ -35,13 +35,13 @@ int print_number(char *str, params_type *params)
 	int negat = (!params->unsign && *str == '-');
 
 	if (!params->precision && *str == '0' && !str[1])
-		str = " ";
+		str = "";
 	if (negat)
 	{
 		str++;
 		i--;
 	}
-	if (params->precision != UNIT_MAX)
+	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
 			*--str = '0';
 	if (negat)
@@ -87,12 +87,12 @@ int print_number_right_shift(char *str, params_type *params)
 	if (params->plus_flag && !neg2 && pad_char == ' ' && !params->unsign)
 		n += _putchar('+');
 	else if (!params->plus_flag && params->space_flag
-			&& !neg2 && !params->unsign && params->zero_flag)
+			&& !neg2 && !params->unsign && !params->zero_flag)
 		n += _putchar(' ');
 	n += _puts(str);
 	return (n);
 }
-
+ 
 /**
  * print_number_left_shift - prints a number with options
  * @str: the base number as a string

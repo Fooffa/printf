@@ -44,13 +44,13 @@ int print_unsigned(va_list ap, params_type *params)
 	unsigned long l;
 
 	if (params->l_modifier)
-		l = (unsigned long) va_arg(ap, unsigned long);
+		l = (unsigned long)va_arg(ap, unsigned long);
 	else if (params->h_modifier)
-		l = (unsigned short int) va_arg(ap, unsigned int);
+		l = (unsigned short int)va_arg(ap, unsigned int);
 	else
-		l = (unsigned int) va_arg(ap, unsigned int);
+		l = (unsigned int)va_arg(ap, unsigned int);
 	params->unsign = 1;
-	return (print_number(convert(1, 10, CONVERT_UNSIGNED, params), params));
+	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
 }
 
 /**

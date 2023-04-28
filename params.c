@@ -14,8 +14,8 @@ void init_params(params_type *params, va_list ap)
 	params->zero_flag = 0;
 	params->minus_flag = 0;
 	params->width = 0;
-	params->prcision = UNIT_MAX;
+	params->precision = UINT_MAX;
 	params->h_modifier = 0;
 	params->l_modifier = 0;
-	(unused)ap;
+	(void)ap;
 }

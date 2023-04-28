@@ -6,7 +6,7 @@
 */
 int (*get_specifier(char *s))(va_list ap, params_type *params)
 {
-	specifier_type specifier[] = {
+	specifier_type specifiers[] = {
 		{"c", print_char}, {"d", print_int},
 		{"i", print_int}, {"s", print_string},
 		{"%", print_percent}, {"b", print_binary},
@@ -18,11 +18,11 @@ int (*get_specifier(char *s))(va_list ap, params_type *params)
 		};
 		int i = 0;
 
-		while (specifier[i].specifier)
+		while (specifiers[i].specifier)
 		{
-			if (*s == specifier[i].specifier[0])
+			if (*s == specifiers[i].specifier[0])
 			{
-				return (specifier[i].f);
+				return (specifiers[i].f);
 			}
 			i++;
 		}
