@@ -51,7 +51,7 @@ typedef struct parameters
 typedef struct specifier
 {
 	char *specifier;
-	int (*f)(va_list,params_t *);
+	int (*f)(va_list, params_type *);
 } specifier_type;
 
 /* _put.c module */
@@ -79,20 +79,20 @@ int (*get_specifier(char *s))(va_list ap, params_type *params);
 int get_print_func(char *s, va_list ap, params_type *params);
 int get_flag(char *s, params_type *params);
 int get_modifier(char *s, params_type *params);
-char *get_width(char *s, params_type *params, va_list);
+char *get_width(char *s, params_type *params, va_list ap);
 
 /* convert_number.c module */
 
-int print_hex(va_list, params_type *params);
-int print_HEX(va_list, params_type *params);
-int print_binary(va_list, params_type *params);
-int print_octal(va_list, params_type *params);
+int print_hex(va_list ap, params_type *params);
+int print_HEX(va_list ap, params_type *params);
+int print_binary(va_list ap, params_type *params);
+int print_octal(va_list ap, params_type *params);
 
 /* simple_pointers.c module */
 
 int print_from_to(char *start, char *stop, char *except);
-int print_rev(va_list, params_type *params);
-int print_rot13(va_list, params_type *params);
+int print_rev(va_list ap, params_type *params);
+int print_rot13(va_list ap, params_type *params);
 
 /* print_number.c module */
 
@@ -103,7 +103,8 @@ int print_number_right_shift(char *str, params_type *params);
 int print_number_left_shift(char *str, params_type *params);
 
 /* params.c module */
- void init_params(params_type *params, va_list ap);
+
+void init_params(params_type *params, va_list ap);
 
 /* string_fields.c module */
 
@@ -111,4 +112,4 @@ char *get_precision(char *p, params_type *params, va_list ap);
 
 /* _printf.c module */
 
-int _printf(const char *format,...);
+int _printf(const char *format, ...);

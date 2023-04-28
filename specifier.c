@@ -4,7 +4,7 @@
 * @s: the format string
 * Return: number of bytes printed
 */
-int (*get_specifier(char *s))(va_list ap, params_type * params)
+int (*get_specifier(char *s))(va_list ap, params_type *params)
 {
 	specifier_type specifier[] = {
 		{"c", print_char}, {"d", print_int},
