@@ -16,12 +16,12 @@ char *convert(long int num, int base, int flags, params_type *params)
 	unsigned long n = num;
 	(void)params;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags && CONVERT_UNSIGNED) && num < 0)
 	{
 		num = -num;
 		sign = '-';
 	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = flags && CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 	do {

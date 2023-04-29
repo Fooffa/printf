@@ -32,11 +32,11 @@ int _strlen(char *s)
 int print_number(char *str, params_type *params)
 {
 	unsigned int i = _strlen(str);
-	int negat = (!params->unsign && *str == '-');
+	int neg1 = (!params->unsign && *str == '-');
 
 	if (!params->precision && *str == '0' && !str[1])
 		str = "";
-	if (negat)
+	if (neg1)
 	{
 		str++;
 		i--;
@@ -44,7 +44,7 @@ int print_number(char *str, params_type *params)
 	if (params->precision != UINT_MAX)
 		while (i++ < params->precision)
 			*--str = '0';
-	if (negat)
+	if (neg1)
 		*--str = '-';
 	if (!params->minus_flag)
 		return (print_number_right_shift(str, params));
@@ -92,7 +92,6 @@ int print_number_right_shift(char *str, params_type *params)
 	n += _puts(str);
 	return (n);
 }
- 
 /**
  * print_number_left_shift - prints a number with options
  * @str: the base number as a string
